@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "379ee1c4-0f97-4cb0-b8a4-53e1ef06b6be",
+		"name": "API Courses",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44437706",
+		"_collection_link": "https://alhasnaaahmed.postman.co/workspace/Alhasnaa-Ahmed's-Workspace~6b3e9d1d-06ea-45c7-8586-c484416fae85/collection/44437706-379ee1c4-0f97-4cb0-b8a4-53e1ef06b6be?action=share&source=collection_link&creator=44437706"
+	},
+	"item": [
+		{
+			"name": "GET Courses",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"check that status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"check that Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"check the title of the first course\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[2].title).to.eql(\"postman\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/courses/{{id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"courses",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST courses",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonfile = pm.response.json();\r",
+							"var courseID = jsonfile.id;\r",
+							"pm.environment.set(\"courseID\", courseID);\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}courses",
+					"host": [
+						"{{url}}courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT courses",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"id\": \"h123\",\r\n      \"title\": \"cypreg\",\r\n      \"description\": \"full cypress course from zero in Arabic\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}courses/{{id}}",
+					"host": [
+						"{{url}}courses"
+					],
+					"path": [
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE courses",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"id\": \"9046\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}courses/{{id}}",
+					"host": [
+						"{{url}}courses"
+					],
+					"path": [
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users{{courseID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users{{courseID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
